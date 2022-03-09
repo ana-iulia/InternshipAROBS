@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>week1.lab5.exercise2</OriginalElement>
+  <nodes>
+    <node x="2.75" y="108.0">week1.lab5.exercise2.RealImage</node>
+    <node x="41.955128205128204" y="284.0">week1.lab5.exercise2.ProxyImage</node>
+    <node x="90.32371794871796" y="0.0">week1.lab5.exercise2.Image</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="week1.lab5.exercise2.ProxyImage" target="week1.lab5.exercise2.Image" relationship="REALIZATION">
+      <point x="54.33333333333334" y="-62.0" />
+      <point x="177.78846153846155" y="258.0" />
+      <point x="202.25" y="258.0" />
+      <point x="202.25" y="82.0" />
+      <point x="151.32371794871796" y="82.0" />
+      <point x="0.0" y="28.0" />
+    </edge>
+    <edge source="week1.lab5.exercise2.RealImage" target="week1.lab5.exercise2.Image" relationship="REALIZATION">
+      <point x="0.0" y="-62.0" />
+      <point x="97.25" y="82.0" />
+      <point x="151.32371794871796" y="82.0" />
+      <point x="0.0" y="28.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic" zoom="0.8341121495327103" showDependencies="false" x="107.5" y="204.0" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Constructors</Category>
+    <Category>Fields</Category>
+    <Category>Inner Classes</Category>
+    <Category>Methods</Category>
+    <Category>Properties</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
