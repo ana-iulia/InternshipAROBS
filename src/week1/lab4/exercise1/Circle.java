@@ -1,4 +1,4 @@
-package week1.lab3.exercise2;
+package week1.lab4.exercise1;
 
 public class Circle {
     private double radius;
@@ -10,8 +10,8 @@ public class Circle {
     }
 
     public Circle(double radius) {
-        this.radius= radius;
-        this.color="red";
+        this.radius = radius;
+        this.color = "red";
     }
 
     public double getRadius() {
@@ -21,15 +21,16 @@ public class Circle {
     public double getArea() {
         return Math.pow(this.radius, 2) * Math.PI;
     }
+
 }
 
 class TestCircle {
     public static void main(String[] args) {
         Circle circle = new Circle();
-        System.out.println(circle.getRadius());
+        System.out.println(circle.getRadius() + " " + circle.getArea());
 
-        circle = new Circle(2.5);
-        System.out.println(circle.getArea());
+        Circle circle1 = new Circle(3.5);
+        System.out.println(circle1.getRadius() + " " + circle1.getArea());
 
     }
 }
