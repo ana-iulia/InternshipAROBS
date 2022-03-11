@@ -1,6 +1,6 @@
 package week1.lab5.exercise1;
 
-import week1.lab4.exercise6.Shape;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,6 +22,10 @@ public class TestShape {
         square.setSide(5.0);
         for (Shape s : shapeList) {
             System.out.println(s);
+            System.out.println(s.getArea());
+            System.out.println(s.getPerimeter());
+
+
         }
 
 

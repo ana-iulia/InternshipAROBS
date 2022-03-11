@@ -5,8 +5,12 @@ public class ProxyImage implements Image {
     private RealImage realImage;
     private String fileName;
 
-    public ProxyImage(String fileName) {
+    public ProxyImage(String fileName,boolean rotated) {
         this.fileName = fileName;
+        if(rotated){
+            RotatedImage();
+        }
+        else display();
     }
 
     @Override

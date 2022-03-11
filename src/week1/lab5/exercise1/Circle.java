@@ -1,6 +1,5 @@
 package week1.lab5.exercise1;
 
-import week1.lab4.exercise6.Shape;
 
 public class Circle extends Shape {
     private double radius;
@@ -27,16 +26,18 @@ public class Circle extends Shape {
         this.radius = radius;
     }
 
+    @Override
     public double getArea() {
         return Math.PI * this.radius * this.radius;
     }
 
+    @Override
     public double getPerimeter() {
         return 2 * Math.PI * this.radius;
     }
 
     @Override
     public String toString() {
-        return "A Circle with radius= "+ this.radius+", which is a subclass of "+super.toString();
+        return "A Circle with radius= " + this.radius + ", which is a subclass of " + super.toString();
     }
 }

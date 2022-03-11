@@ -1,6 +1,5 @@
 package week1.lab5.exercise1;
 
-import week1.lab4.exercise6.Shape;
 
 public class Rectangle extends Shape {
     private double width;
@@ -38,10 +37,12 @@ public class Rectangle extends Shape {
         this.length = length;
     }
 
+    @Override
     public double getArea() {
         return this.length * this.width;
     }
 
+    @Override
     public double getPerimeter() {
         return 2 * this.length + 2 * this.width;
     }
