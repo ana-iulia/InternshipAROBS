@@ -8,7 +8,7 @@ public class ProxyImage implements Image {
     public ProxyImage(String fileName,boolean rotated) {
         this.fileName = fileName;
         if(rotated){
-            RotatedImage();
+            rotatedImage();
         }
         else display();
     }
@@ -22,7 +22,7 @@ public class ProxyImage implements Image {
     }
 
     @Override
-    public void RotatedImage() {
+    public void rotatedImage() {
         System.out.println("Display rotated " + this.fileName);
 
     }

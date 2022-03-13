@@ -15,7 +15,7 @@ public class RealImage implements Image {
     }
 
     @Override
-    public void RotatedImage() {
+    public void rotatedImage() {
         System.out.println("Display rotated " + this.fileName);
     }
 

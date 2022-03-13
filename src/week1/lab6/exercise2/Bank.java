@@ -1,8 +1,6 @@
 package week1.lab6.exercise2;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 
 public class Bank {
     private ArrayList<BankAccount> bankAccounts = new ArrayList<>();
@@ -21,20 +19,19 @@ public class Bank {
 
     public void printAccounts(double minBalance, double maxBalance) {
         this.bankAccounts
-                .stream()
                 .forEach(x -> {
                     if (x.getBalance() >= minBalance && x.getBalance() <= maxBalance)
                         System.out.println(x);
                 });
     }
 
-    public BankAccount getBankAccount(String owner) {
+    public Optional<BankAccount> getBankAccount(String owner) {
         for (BankAccount bankAccount : bankAccounts) {
-            if (bankAccount.getOwner() == owner) {
-                return bankAccount;
+            if (Objects.equals(bankAccount.getOwner(), owner)) {
+                return Optional.of(bankAccount);
             }
         }
-        return null;
+       return Optional.empty();
     }
 
     public List<BankAccount> getAllAccounts() {

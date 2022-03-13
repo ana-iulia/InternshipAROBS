@@ -1,0 +1,13 @@
+
+€
+java:S1149"eReplace the synchronized class "Vector" by an unsynchronized one such as "ArrayList" or "LinkedList".(—Ú”æýÿÿÿÿ
+{
+java:S1149 "eReplace the synchronized class "Vector" by an unsynchronized one such as "ArrayList" or "LinkedList".(•µ½¦
+N	java:S106"9Replace this use of System.out or System.err by a logger.(Ý’ÂÊ
+Z	java:S106"9Replace this use of System.out or System.err by a logger.(ðÕâ»øÿÿÿÿ8©­ïÄö/
+U	java:S106"9Replace this use of System.out or System.err by a logger.(˜óúÅ8è’òÄö/
+t
+java:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(—Ú”æýÿÿÿÿ
+W
+java:S4973"<Strings and Boxed types should be compared using "equals()".(‹ÏŒëýÿÿÿÿ
+t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(þ¥ûùÿÿÿÿ

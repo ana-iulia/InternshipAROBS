@@ -1,0 +1,10 @@
+
+E
+java:S1185"(Remove this method to simply inherit it.(Ñ„ü…8ôø‡õö/
+W
+java:S1161":Add the "@Override" annotation above this method signature(Ñ„ü…8ôø‡õö/
+E
+java:S1185"(Remove this method to simply inherit it.(œ‰¥”8õø‡õö/
+W
+java:S1161":Add the "@Override" annotation above this method signature(œ‰¥”8õø‡õö/
+o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(µ¨Ï¼

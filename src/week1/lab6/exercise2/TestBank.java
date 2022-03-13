@@ -13,7 +13,7 @@ public class TestBank {
         bank.printAccounts();
         System.out.println("Accounts in range (21.0-30.0): ");
         bank.printAccounts(21.0, 30.0);
-        System.out.println("Mihai account balance: " + bank.getBankAccount("Mihai").getBalance());
+        System.out.println("Mihai account balance: " + bank.getBankAccount("Mihai").get().getBalance());
         System.out.println("Accounts sorted by owner: ");
         bank.getAllAccounts()
                 .stream()
