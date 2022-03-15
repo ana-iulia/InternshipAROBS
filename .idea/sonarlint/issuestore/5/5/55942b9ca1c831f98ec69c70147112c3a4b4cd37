@@ -1,6 +1,0 @@
-
-X
-java:S6201"BReplace this instanceof check and cast with 'instanceof Word word'(ÛüŒ©
-Z
-java:S1128"=Remove this unused import 'week1.lab6.exercise1.BankAccount'.(ðÔæß8Œæ—±÷/
-t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ž¤ö¹øÿÿÿÿ
