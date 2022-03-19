@@ -1,0 +1,12 @@
+com\internshipArobs\servlet\controller\MyToDoList.class
+com\internshipArobs\servlet\controller\RequestListener.class
+com\internshipArobs\servlet\repository\UserRepository.class
+com\internshipArobs\servlet\controller\PerformanceFilter.class
+com\internshipArobs\servlet\domain\User.class
+com\internshipArobs\servlet\controller\LoginServlet.class
+com\internshipArobs\servlet\service\IUserService.class
+com\internshipArobs\servlet\service\UserService.class
+com\internshipArobs\servlet\controller\UserController.class
+com\internshipArobs\servlet\controller\AppListener.class
+com\internshipArobs\servlet\repository\IUserRepository.class
+com\internshipArobs\servlet\controller\Register.class
