@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>week1.lab8.exercise2</OriginalElement>
+  <nodes>
+    <node x="94.00000000000001" y="0.0">week1.lab8.exercise2.Z</node>
+    <node x="0.0" y="11.5">week1.lab8.exercise2.X</node>
+    <node x="90.50000000000001" y="129.0">week1.lab8.exercise2.Y</node>
+    <node x="226.0" y="11.5">week1.lab8.exercise2.A</node>
+    <node x="118.00000000000001" y="257.0">week1.lab8.exercise2.Q</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="week1.lab8.exercise2.Y" target="week1.lab8.exercise2.A" relationship="REALIZATION">
+      <point x="39.66666666666666" y="-39.0" />
+      <point x="189.66666666666669" y="104.0" />
+      <point x="282.0" y="104.0" />
+      <point x="0.0" y="28.0" />
+    </edge>
+    <edge source="week1.lab8.exercise2.Y" target="week1.lab8.exercise2.X" relationship="DEPENDENCY">
+      <point x="-39.66666666666666" y="-39.0" />
+      <point x="110.33333333333336" y="104.0" />
+      <point x="37.0" y="104.0" />
+      <point x="0.0" y="28.0" />
+    </edge>
+    <edge source="week1.lab8.exercise2.Y" target="week1.lab8.exercise2.Z" relationship="GENERALIZATION">
+      <point x="0.0" y="-39.0" />
+      <point x="0.0" y="39.5" />
+    </edge>
+    <edge source="week1.lab8.exercise2.Q" target="week1.lab8.exercise2.Y" relationship="TO_ONE">
+      <point x="16.0" y="-28.0" />
+      <point x="166.0" y="232.0" />
+      <point x="179.75" y="232.0" />
+      <point x="29.75" y="39.0" />
+    </edge>
+    <edge source="week1.lab8.exercise2.Q" target="week1.lab8.exercise2.Y" relationship="CREATE">
+      <point x="-16.0" y="-28.0" />
+      <point x="134.0" y="232.0" />
+      <point x="120.25000000000001" y="232.0" />
+      <point x="-29.75" y="39.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic" zoom="1.0" showDependencies="true" x="169.0" y="156.5" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Fields</Category>
+    <Category>Inner Classes</Category>
+    <Category>Methods</Category>
+    <Category>Properties</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
