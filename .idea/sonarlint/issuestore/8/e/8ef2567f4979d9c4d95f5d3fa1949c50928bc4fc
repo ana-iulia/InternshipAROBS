@@ -1,0 +1,8 @@
+
+p	java:S116"[Rename this field "SIMULATION_STEPS" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ï·ùÿ
+7
+java:S1170"!Make this final field static too.(ï·ùÿ
+V	java:S125"<This block of commented-out lines of code should be removed.(„ÐµÍûÿÿÿÿ
+y
+java:S2142!"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(è®ã¶øÿÿÿÿ
+t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ì£æ‰ýÿÿÿÿ

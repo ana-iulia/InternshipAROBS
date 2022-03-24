@@ -1,0 +1,10 @@
+
+R
+java:S1854"<Remove this useless assignment to local variable "moveMade".(æ²îü
+C
+java:S1481"-Remove this unused "moveMade" local variable.(æ²îü
+t
+java:S2142!"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(ä ¹€
+3
+java:S2119-"Save and re-use this "Random".(¼İÅf
+t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ÚÉ‰ÿÿÿÿÿ

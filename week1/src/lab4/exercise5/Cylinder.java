@@ -1,6 +1,7 @@
 package lab4.exercise5;
 
-import week1.lab3.exercise2.Circle;
+
+import lab4.exercise1.Circle;
 
 public class Cylinder extends Circle {
 

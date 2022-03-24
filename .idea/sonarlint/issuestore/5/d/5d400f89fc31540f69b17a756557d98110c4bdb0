@@ -1,0 +1,18 @@
+
+J
+java:S3740	"/Provide the parametrized type for this generic.(£‚öñúÿÿÿÿ
+J
+java:S3740	"/Provide the parametrized type for this generic.(£‚öñúÿÿÿÿ
+5
+java:S2129" Remove this "Double" constructor(§ÒŠ4
+]
+java:S5738"HRemove this call to a deprecated method, it has been marked for removal.(§ÒŠ4
+K
+java:S2446"0"notify" may not wake up the appropriate thread.(óÄ£¶øÿÿÿÿ
+t
+java:S2142)"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(”ı¾
+<
+java:S1110'"!Remove these useless parentheses.(å“Ìêÿÿÿÿÿ
+Y
+java:S1155&">Use isEmpty() to check whether the collection is empty or not.(¥¢íşÿÿÿÿ
+t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(Ã¯·„ùÿÿÿÿ

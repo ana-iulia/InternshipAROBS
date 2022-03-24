@@ -1,0 +1,10 @@
+
+E
+java:S1656"/Remove or correct this useless self-assignment.(·‰ëπ
+E
+java:S1656	"/Remove or correct this useless self-assignment.(ëπß≤
+n	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ü—œ
+z
+java:S4165"dRemove this useless assignment; "radius" already holds the assigned value along all execution paths.(·‰ëπ
+y
+java:S4165	"cRemove this useless assignment; "color" already holds the assigned value along all execution paths.(ëπß≤

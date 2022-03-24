@@ -1,0 +1,16 @@
+
+N	java:S106"9Replace this use of System.out or System.err by a logger.(Îñë
+S	java:S106"9Replace this use of System.out or System.err by a logger.(Áå¨ÿÿÿÿÿ
+N	java:S106"9Replace this use of System.out or System.err by a logger.(¡Ùƒã
+S	java:S106#"9Replace this use of System.out or System.err by a logger.(ºÂàíùÿÿÿÿ
+S	java:S106%"9Replace this use of System.out or System.err by a logger.(„ÎıÖşÿÿÿÿ
+S	java:S106)"9Replace this use of System.out or System.err by a logger.(¶¯÷ëúÿÿÿÿ
+S	java:S106,"9Replace this use of System.out or System.err by a logger.(¥ÅÂ—ıÿÿÿÿ
+S	java:S106-"9Replace this use of System.out or System.err by a logger.(ëŒ¿åùÿÿÿÿ
+S	java:S1060"9Replace this use of System.out or System.err by a logger.(Ô¬˜Ñøÿÿÿÿ
+S	java:S1062"9Replace this use of System.out or System.err by a logger.(‚¦ô»ıÿÿÿÿ
+N	java:S1069"9Replace this use of System.out or System.err by a logger.(çÑ¶š
+N	java:S106="9Replace this use of System.out or System.err by a logger.(äìÎÆ
+P
+java:S1141"5Extract this nested try block into a separate method.(¡»¢üùÿÿÿÿ
+o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(¤é¹ª

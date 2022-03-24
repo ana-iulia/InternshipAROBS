@@ -1,0 +1,27 @@
+
+`	java:S112C"FDefine and throw a dedicated exception instead of using a generic one.(õî…üÿÿÿÿ
+`	java:S112<"FDefine and throw a dedicated exception instead of using a generic one.(§‹²½ùÿÿÿÿ
+`	java:S112P"FDefine and throw a dedicated exception instead of using a generic one.(õî…üÿÿÿÿ
+S
+java:S1117"8Rename "data" which hides the field declared at line 11.(ÇÉÓæüÿÿÿÿ
+<
+java:S1905!"&Remove this unnecessary cast to "int".(îÍªé
+A
+java:S19051"&Remove this unnecessary cast to "int".(º­‡ëøÿÿÿÿ
+K
+java:S1128"0Remove this unused import 'java.io.IOException'.(ªº»Úıÿÿÿÿ
+2
+java:S1643"Use a StringBuilder instead.(åÏ³„
+7
+java:S1643""Use a StringBuilder instead.(ŠÑœúûÿÿÿÿ
+2
+java:S1643$"Use a StringBuilder instead.(æÉ˜ÿ
+1
+java:S16432"Use a StringBuilder instead.(öíâ}
+7
+java:S16434"Use a StringBuilder instead.(—˜İ£ûÿÿÿÿ
+o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ş·šä
+^
+java:S2095?"HUse try-with-resources or close this "FileWriter" in a "finally" clause.(¶çÏÍ
+^
+java:S2095A"HUse try-with-resources or close this "FileWriter" in a "finally" clause.(˜¸ÿ»

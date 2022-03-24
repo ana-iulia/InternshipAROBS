@@ -1,0 +1,18 @@
+
+=
+java:S1125!"'Remove the unnecessary boolean literal.(şÒ§Ù
+N	java:S1062"9Replace this use of System.out or System.err by a logger.(„¡ÁÆ
+S	java:S1066"9Replace this use of System.out or System.err by a logger.(ëåÊÙüÿÿÿÿ
+G
+java:S5261H"1Add explicit curly braces to avoid dangling else.(å¥‡
+=
+java:S1125E"'Remove the unnecessary boolean literal.(ä‹Ò
+M	java:S106F"9Replace this use of System.out or System.err by a logger.(ğÀİJ
+S	java:S106I"9Replace this use of System.out or System.err by a logger.(òäåÿÿÿÿÿ
+S	java:S106P"9Replace this use of System.out or System.err by a logger.(“ª¥íşÿÿÿÿ
+N	java:S106V"9Replace this use of System.out or System.err by a logger.(°Ê¸Ä
+S	java:S106Y"9Replace this use of System.out or System.err by a logger.(º÷»¸øÿÿÿÿ
+S	java:S106["9Replace this use of System.out or System.err by a logger.(ÎÎ‡“ıÿÿÿÿ
+t
+java:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(ú©ûªûÿÿÿÿ
+t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(î³ººøÿÿÿÿ

@@ -1,0 +1,22 @@
+
+N	java:S106"9Replace this use of System.out or System.err by a logger.(Îñë
+N	java:S106"9Replace this use of System.out or System.err by a logger.(Îñë
+N	java:S106"9Replace this use of System.out or System.err by a logger.(¡Ùƒã
+a	java:S128%"LEnd this switch case with an unconditional break, return or throw statement.(ç¿Ô
+N	java:S106"9Replace this use of System.out or System.err by a logger.(£¦‹
+N	java:S106 "9Replace this use of System.out or System.err by a logger.(ÜƒÎš
+N	java:S106!"9Replace this use of System.out or System.err by a logger.(Âë©¸
+S	java:S106""9Replace this use of System.out or System.err by a logger.(Ì÷–†ÿÿÿÿÿ
+S	java:S106#"9Replace this use of System.out or System.err by a logger.(ªêš»ÿÿÿÿÿ
+S	java:S106)"9Replace this use of System.out or System.err by a logger.(Áå¨ÿÿÿÿÿ
+N	java:S106+"9Replace this use of System.out or System.err by a logger.(¡Ùƒã
+N	java:S106/"9Replace this use of System.out or System.err by a logger.(½ÎÎ»
+S	java:S1061"9Replace this use of System.out or System.err by a logger.(Üæ¸øÿÿÿÿ
+S	java:S1066"9Replace this use of System.out or System.err by a logger.(ıı•Âøÿÿÿÿ
+S	java:S1068"9Replace this use of System.out or System.err by a logger.(˜ÔÅ©üÿÿÿÿ
+S	java:S106;"9Replace this use of System.out or System.err by a logger.(ÕªÆïøÿÿÿÿ
+N	java:S106>"9Replace this use of System.out or System.err by a logger.(ÎŞÄø
+N	java:S106E"9Replace this use of System.out or System.err by a logger.(çÑ¶š
+N	java:S106I"9Replace this use of System.out or System.err by a logger.(äìÎÆ
+N	java:S106N"9Replace this use of System.out or System.err by a logger.(çÑ¶š
+o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ÆŞÂ­

@@ -1,0 +1,6 @@
+
+S	java:S106"9Replace this use of System.out or System.err by a logger.(Ή¦…‡ϊÿÿÿÿ
+S	java:S106"9Replace this use of System.out or System.err by a logger.(µΟ…θωÿÿÿÿ
+‰
+java:S1319+"sThe return type of this method should be an interface such as "SortedSet" rather than the implementation "TreeSet".(“†ς™
+o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(Γÿ°
