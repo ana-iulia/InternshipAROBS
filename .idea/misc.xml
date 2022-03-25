@@ -2,11 +2,13 @@
 <project version="4">
   <component name="FrameworkDetectionExcludesConfiguration">
     <file type="web" url="file://$PROJECT_DIR$/week2" />
+    <file type="web" url="file://$PROJECT_DIR$/week3/week3JDBC" />
   </component>
   <component name="MavenProjectsManager">
     <option name="originalFiles">
       <list>
         <option value="$PROJECT_DIR$/week2/pom.xml" />
+        <option value="$PROJECT_DIR$/week3/week3JDBC/pom.xml" />
       </list>
     </option>
   </component>

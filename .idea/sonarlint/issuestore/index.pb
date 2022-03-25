@@ -15,9 +15,6 @@ Q
 !week1/src/lab7/exercise2/data.txt,4\b\4b36234e5e8336e2e99b582e7c81bc6b6061a869
 Q
 !week1/src/lab7/exercise4/cars.dat,b\3\b39f29575ddbf5adbac2e617fa3fd87ef38bafa0
-:
-
-.gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302
 O
 week1/src/lab8/exercise1/A.java,2\5\25a66ff95003e6a2e423605dbf16f6baecc39a2d
 O
@@ -258,15 +255,3 @@ W
 'week1/src/lab2/exercise6/Factorial.java,4\d\4d5eec7df8710f92ecf7fb22ca90a7e321afc230
 T
 $week1/src/lab5/exercise1/Circle.java,7\5\7512dbdee248dcba75da11993cd657b36b270b1a
-W
-'week1/src/lab5/exercise1/Rectangle.java,7\2\726e171d1fabc8fdc9d0f5b4aa7245311fd50f88
-T
-$week1/src/lab5/exercise1/Square.java,5\e\5e48f9599dc822416e0ebb512e4fb14d1f366241
-X
-(week1/src/lab5/exercise2/ProxyImage.java,9\d\9d5db3c59144643bbb33e74464d58a919bf46d85
-Y
-)week1/src/lab6/exercise2/BankAccount.java,8\d\8dec9ac9a89542ddf4dd4078208a5926d0336a37
-R
-"week1/src/lab6/exercise2/Bank.java,7\9\79734997f838ab7fb6e32308f4ea53d7b22c20f2
-Y
-)week1/src/lab6/exercise1/BankAccount.java,b\2\b212b95c4dee5cdb5d8b714ded8cb078a305d3ea
