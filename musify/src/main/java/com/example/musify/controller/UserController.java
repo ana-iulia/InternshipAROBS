@@ -54,29 +54,4 @@ public class UserController {
     }
 
 
-
-    //    @GetMapping("/{id}")
-//    public String helloSpring(@PathVariable("id") Integer id) {
-//        System.out.println("id: "+id);
-//        return userService.getMessage();
-//    }
-
-    //    @GetMapping("/{id}")
-//    public String helloSpring(@RequestParam Integer id) {
-//        System.out.println("id: " + id);
-//        return userService.getMessage();
-//    }
-
-
-//    @GetMapping("/{id}")
-//    public void helloSpring(@RequestBody User user) {
-//        System.out.println();
-//    }
-//    @DeleteMapping("/{id}")
-//    public int deleteUser(@PathVariable("id") Integer id) {
-//        return userService.deleteUser(id);
-//    }
-//
-
-
 }
