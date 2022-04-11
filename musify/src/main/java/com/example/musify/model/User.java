@@ -4,6 +4,10 @@ package com.example.musify.model;
 import javax.persistence.*;
 import java.util.List;
 
+@NamedQueries({
+        @NamedQuery(name = "findAllUsers", query = "from User"),
+        //@NamedQuery(name = "findArtistById", query = "from Artist where id = :id")
+})
 @Entity
 @Table(name = "users")
 public class User {
@@ -12,10 +16,10 @@ public class User {
     @Column(name = "id")
     private int id;
 
-    @Column(name = "firstName", nullable = false)
+    @Column(name = "first_ame", nullable = false)
     private String firstName;
 
-    @Column(name = "lastName", nullable = false)
+    @Column(name = "last_ame", nullable = false)
     private String lastName;
 
     @Column(name = "email", unique = true)
@@ -24,7 +28,7 @@ public class User {
     @Column(name = "password", nullable = false)
     private String password;
 
-    @Column(name = "originCountry")
+    @Column(name = "origin_country")
     private String countryOfOrigin;
 
     @Column(name = "role", nullable = false)
@@ -120,19 +124,4 @@ public class User {
         this.status = status;
     }
 
-    public List<Playlist> getPlaylists() {
-        return playlists;
-    }
-
-    public void setPlaylists(List<Playlist> playlists) {
-        this.playlists = playlists;
-    }
-
-    public List<Playlist> getFollowedPlaylists() {
-        return followedPlaylists;
-    }
-
-    public void setFollowedPlaylists(List<Playlist> followedPlaylists) {
-        this.followedPlaylists = followedPlaylists;
-    }
 }
