@@ -4,7 +4,8 @@ import com.example.musify.dto.LoginRequest;
 import com.example.musify.dto.UserDTO;
 import com.example.musify.dto.UserRegisterDTO;
 import com.example.musify.model.User;
-import com.example.musify.service.UserService;
+import com.example.musify.service.UserServ;
+import lombok.RequiredArgsConstructor;
 import org.apache.catalina.connector.Request;
 import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,17 +13,18 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.List;
+
 
 @RestController
+@RequiredArgsConstructor
 @RequestMapping("/musify/user")
 public class UserController {
     @Autowired
-    private UserService userService;
+    private UserServ userService;
 
     @RequestMapping(method = RequestMethod.GET)
-    public Iterable<UserDTO> getAll() {
-        return userService.getAllUsersDTO();
+    public Iterable<User> getAll() {
+        return userService.getAllUsers();
     }
 
     @PostMapping("/register")
@@ -30,53 +32,30 @@ public class UserController {
         return userService.saveUser(userDTO);
     }
 
-    @PostMapping("/register/admin")
-    public UserDTO registerAdmin(@RequestBody @Valid UserRegisterDTO userDTO) {
-        return userService.saveUserAdmin(userDTO);
-    }
 
     @PostMapping("/login")
     public String login(@RequestBody @Valid LoginRequest loginRequest) {
         return userService.login(loginRequest);
     }
 
-    @PutMapping("/delete/{id}")
-    public UserDTO deleteUser(@PathVariable("id") Integer id) {
-        System.out.println("ID: " + id);
-        return userService.updateUserToDeleted(id);
-    }
-
-    @PostMapping("/logout")
-    public String logout(@RequestHeader("authorization") HttpHeaders headers) {
-        String[] words = headers.getFirst("authorization").split(" ");
-        return userService.logout(words[1]);
-
-    }
-
-
-
-    //    @GetMapping("/{id}")
-//    public String helloSpring(@PathVariable("id") Integer id) {
-//        System.out.println("id: "+id);
-//        return userService.getMessage();
+//    @PostMapping("/register/admin")
+//    public UserDTO registerAdmin(@RequestBody @Valid UserRegisterDTO userDTO) {
+//        return userService.saveUserAdmin(userDTO);
 //    }
 
-    //    @GetMapping("/{id}")
-//    public String helloSpring(@RequestParam Integer id) {
-//        System.out.println("id: " + id);
-//        return userService.getMessage();
-//    }
-
-
-//    @GetMapping("/{id}")
-//    public void helloSpring(@RequestBody User user) {
-//        System.out.println();
-//    }
-//    @DeleteMapping("/{id}")
-//    public int deleteUser(@PathVariable("id") Integer id) {
-//        return userService.deleteUser(id);
+//
+//    @PutMapping("/delete/{id}")
+//    public UserDTO deleteUser(@PathVariable("id") Integer id) {
+//        System.out.println("ID: " + id);
+//        return userService.updateUserToDeleted(id);
 //    }
 //
+//    @PostMapping("/logout")
+//    public String logout(@RequestHeader("authorization") HttpHeaders headers) {
+//        String[] words = headers.getFirst("authorization").split(" ");
+//        return userService.logout(words[1]);
+//
+//    }
 
 
 }

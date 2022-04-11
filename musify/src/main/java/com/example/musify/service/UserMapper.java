@@ -1,11 +1,11 @@
 package com.example.musify.service;
-
 import com.example.musify.dto.LoginRequest;
 import com.example.musify.dto.UserDTO;
 import com.example.musify.dto.UserRegisterDTO;
 import com.example.musify.model.User;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
+
 
 @Mapper(componentModel = "spring")
 public interface UserMapper {
