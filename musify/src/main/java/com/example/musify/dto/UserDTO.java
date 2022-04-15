@@ -2,7 +2,15 @@ package com.example.musify.dto;
 
 import com.example.musify.model.Role;
 import com.example.musify.model.Status;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+@Setter
+@Getter
+@NoArgsConstructor
+@AllArgsConstructor
 public class UserDTO {
     private String firstName;
     private String lastName;
@@ -11,63 +19,4 @@ public class UserDTO {
     private Role role;
     private Status status;
 
-    public UserDTO() {
-    }
-
-    public UserDTO(String firstName, String lastName, String email, String countryOfOrigin, Role role, Status status) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
-        this.countryOfOrigin = countryOfOrigin;
-        this.role = role;
-        this.status = status;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getCountryOfOrigin() {
-        return countryOfOrigin;
-    }
-
-    public void setCountryOfOrigin(String countryOfOrigin) {
-        this.countryOfOrigin = countryOfOrigin;
-    }
-
-    public Role getRole() {
-        return role;
-    }
-
-    public void setRole(Role role) {
-        this.role = role;
-    }
-
-    public Status getStatus() {
-        return status;
-    }
-
-    public void setStatus(Status status) {
-        this.status = status;
-    }
 }

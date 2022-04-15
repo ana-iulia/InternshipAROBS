@@ -1,5 +1,5 @@
-package com.example.musify.service;
-import com.example.musify.dto.LoginRequest;
+package com.example.musify.mapper;
+import com.example.musify.dto.LoginRequestDTO;
 import com.example.musify.dto.UserDTO;
 import com.example.musify.dto.UserRegisterDTO;
 import com.example.musify.model.User;
@@ -16,7 +16,7 @@ public interface UserMapper {
     User toUserEntity(UserRegisterDTO userDTO);
 
     @Mapping(target = "password", source = "password")
-    User loginToUser(LoginRequest loginRequest);
+    User loginToUser(LoginRequestDTO loginRequest);
 
     UserDTO toUserDTO(User user);
 
