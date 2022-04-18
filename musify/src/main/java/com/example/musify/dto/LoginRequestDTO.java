@@ -12,21 +12,11 @@ import javax.validation.constraints.Pattern;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserRegisterDTO {
-    @NotBlank(message = "Firstname is mandatory")
-    private String firstName;
-
-    @NotBlank(message = "Lastname is mandatory")
-    private String lastName;
-
+public class LoginRequestDTO {
     @NotBlank(message = "Email is mandatory")
-    @Pattern(regexp = "^\\w+([-+.']\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*$", message = "Email invalid!")
     private String email;
 
     @NotBlank(message = "Password is mandatory")
     private String password;
-
-    private String countryOfOrigin;
-
 
 }

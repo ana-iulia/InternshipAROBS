@@ -1,8 +1,8 @@
 package com.example.musify.repository;
 import com.example.musify.model.User;
-import com.example.musify.service.UserRowMapper;
+import com.example.musify.mapper.UserRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.stereotype.Repository;
+
 import javax.sql.DataSource;
 import java.util.List;
 

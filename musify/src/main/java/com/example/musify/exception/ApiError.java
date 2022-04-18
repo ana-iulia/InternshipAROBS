@@ -31,7 +31,7 @@ public class ApiError {
     public ApiError(HttpStatus errorCode, List<String> errorMessages) {
         this.timeStamp = LocalDateTime.now();
         this.errorCode = errorCode;
-        if (errorMessages.isEmpty()) {
+        if (this.errorMessages==null) {
             this.errorMessages = new ArrayList<>();
         }
         errorMessages.forEach(error -> this.errorMessages.add(error));
