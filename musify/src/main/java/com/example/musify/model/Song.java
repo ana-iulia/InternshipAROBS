@@ -28,9 +28,9 @@ public class Song {
     @Column(name = "creationDate")
     private LocalDate creationDate;
 
-    @OneToMany
-    @JoinColumn(name = "song_id")
-    private List<SongPlaylist> songPlaylists;
+//    @OneToMany
+//    @JoinColumn(name = "song_id")
+//    private List<SongPlaylist> songPlaylists;
 
     @OneToMany
     @JoinColumn(name = "song_id")

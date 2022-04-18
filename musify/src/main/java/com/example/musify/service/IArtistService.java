@@ -11,5 +11,4 @@ public interface IArtistService {
 
     ArtistDTO updateArtist(Integer id, ArtistDTO artistDTO);
 
-    int countArtist(String firstName);
 }

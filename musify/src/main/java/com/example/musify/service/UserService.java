@@ -62,9 +62,7 @@ public class UserService implements IUserService {
     @Transactional
     public UserDTO updateUserToDeleted(Integer id) {
         User user = userRepository.getById(id);
-        //System.out.println("Email to delete: " + user.getEmail());
         user.setStatus(Status.DELETED);
-        //userRepository.updateUser(user.getId(), user.getStatus());
         return userMapper.toUserDTO(user);
 
     }

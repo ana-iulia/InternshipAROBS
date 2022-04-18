@@ -13,10 +13,10 @@ import org.springframework.stereotype.Repository;
 public interface UserRepository extends JpaRepository<User, Integer> {
     User findByEmail(String email);
 
-    @Modifying
-    @Query(value = "UPDATE User u SET u.status=:status WHERE u.id = :id")
-    void updateUser(
-            @Param("id") Integer id,
-            @Param("status") Status status
-    );
+//    @Modifying
+//    @Query(value = "UPDATE User u SET u.status=:status WHERE u.id = :id")
+//    void updateUser(
+//            @Param("id") Integer id,
+//            @Param("status") Status status
+//    );
 }
