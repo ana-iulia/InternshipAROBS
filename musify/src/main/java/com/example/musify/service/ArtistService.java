@@ -1,18 +1,13 @@
 package com.example.musify.service;
 
 import com.example.musify.dto.ArtistDTO;
-import com.example.musify.dto.UserDTO;
 import com.example.musify.mapper.ArtistMapper;
 import com.example.musify.model.Artist;
-import com.example.musify.model.Status;
-import com.example.musify.model.User;
 import com.example.musify.repository.springdata.ArtistRepository;
-import com.example.musify.repository.springdata.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -59,14 +54,9 @@ public class ArtistService implements IArtistService {
             artist.setEndActivePeriod(artistDTO.getEndActivePeriod());
         }
 
-        artistRepository.updateArtist(artist.getId(), artist.getFirstName(),artist.getLastName(),artist.getStageName(),artist.getBirthday(),artist.getStartActivePeriod(),artist.getEndActivePeriod());
         return artistMapper.toArtistDTO(artist);
     }
 
-    @Override
-    public int countArtist(String firstName) {
-        return artistRepository.countArtist(firstName);
-    }
 
 
 }
