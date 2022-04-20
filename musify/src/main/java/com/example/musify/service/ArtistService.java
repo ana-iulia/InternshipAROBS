@@ -3,9 +3,12 @@ package com.example.musify.service;
 import com.example.musify.dto.ArtistDTO;
 import com.example.musify.mapper.ArtistMapper;
 import com.example.musify.model.Artist;
+import com.example.musify.model.Role;
 import com.example.musify.repository.springdata.ArtistRepository;
+import com.example.musify.security.JwtUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.webjars.NotFoundException;
 
 import javax.transaction.Transactional;
 import java.util.List;
@@ -19,6 +22,10 @@ public class ArtistService implements IArtistService {
     @Autowired
     private ArtistMapper artistMapper;
 
+    @Autowired
+    private JwtUtils jwtUtils;
+
+
     @Override
     public List<ArtistDTO> getAllArtists() {
         return artistRepository.findAll().stream().map(artistMapper::toArtistDTO).collect(Collectors.toList());
@@ -26,9 +33,12 @@ public class ArtistService implements IArtistService {
 
     @Override
     @Transactional
-    public ArtistDTO saveArtist(ArtistDTO artistDTO) {
-        Artist artist = artistMapper.toArtistEntity(artistDTO);
-        return artistMapper.toArtistDTO(artistRepository.save(artist));
+    public ArtistDTO saveArtist(ArtistDTO artistDTO,String token) throws IllegalArgumentException{
+        if (jwtUtils.getRoleFromToken(token).equals(Role.ADMIN)) {
+            Artist artist = artistMapper.toArtistEntity(artistDTO);
+            return artistMapper.toArtistDTO(artistRepository.save(artist));
+        }
+        throw new IllegalArgumentException("You do not have permission for this request.");
     }
 
     @Override
@@ -56,7 +66,6 @@ public class ArtistService implements IArtistService {
 
         return artistMapper.toArtistDTO(artist);
     }
-
 
 
 }

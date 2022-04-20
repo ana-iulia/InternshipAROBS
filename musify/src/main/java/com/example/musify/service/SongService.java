@@ -5,8 +5,10 @@ import com.example.musify.dto.SongDTO;
 import com.example.musify.dto.UserDTO;
 import com.example.musify.mapper.SongMapper;
 import com.example.musify.model.Artist;
+import com.example.musify.model.Role;
 import com.example.musify.model.Song;
 import com.example.musify.repository.springdata.SongRepository;
+import com.example.musify.security.JwtUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -23,6 +25,10 @@ public class SongService implements ISongService {
     @Autowired
     private SongMapper songMapper;
 
+    @Autowired
+    private JwtUtils jwtUtils;
+
+
     @Override
     public List<SongDTO> getAllSongs() {
         return songRepository.findAll().stream().map(songMapper::toSongDTO).collect(Collectors.toList());
@@ -30,9 +36,12 @@ public class SongService implements ISongService {
 
     @Override
     @Transactional
-    public SongDTO saveSong(SongDTO songDTO) {
-        Song song = songMapper.toSongEntity(songDTO);
-        return songMapper.toSongDTO(songRepository.save(song));
+    public SongDTO saveSong(SongDTO songDTO, String token) throws IllegalArgumentException {
+        if (jwtUtils.getRoleFromToken(token).equals(Role.ADMIN)) {
+            Song song = songMapper.toSongEntity(songDTO);
+            return songMapper.toSongDTO(songRepository.save(song));
+        }
+        throw new IllegalArgumentException("You do not have permission for this request.");
     }
 
     @Override

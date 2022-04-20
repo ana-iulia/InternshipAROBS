@@ -81,6 +81,20 @@ public class JwtUtils {
 
     }
 
+    public Role getRoleFromToken(String jwtToken) {
+        Algorithm algorithm = Algorithm.HMAC256(signatureSecret);
+        JWTVerifier verifier = JWT.require(algorithm)
+                .withIssuer(issuer)
+                .withSubject(issuer)
+                .build();
+        DecodedJWT decodedJWT = verifier.verify(jwtToken);
+        String role = decodedJWT.getClaim("role").asString();
+        if (role.equals("ADMIN")) {
+            return Role.ADMIN;
+        }
+        return Role.REGULAR;
+    }
+
     public List<String> getBlacklist() {
         return blacklist;
     }

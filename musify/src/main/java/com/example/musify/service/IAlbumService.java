@@ -7,7 +7,7 @@ import java.util.List;
 public interface IAlbumService {
     List<AlbumDTO> getAllAlbums();
 
-    AlbumDTO saveAlbum(AlbumDTO albumDTO);
+    AlbumDTO saveAlbum(AlbumDTO albumDTO, String token) throws IllegalArgumentException;
 
     AlbumDTO updateAlbum(Integer id, AlbumDTO albumDTO);
 }

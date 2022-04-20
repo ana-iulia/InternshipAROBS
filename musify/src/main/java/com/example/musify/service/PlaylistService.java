@@ -1,6 +1,7 @@
 package com.example.musify.service;
 
 import com.example.musify.dto.AlbumDTO;
+import com.example.musify.dto.PlaylistCreateDTO;
 import com.example.musify.dto.PlaylistDTO;
 import com.example.musify.mapper.AlbumMapper;
 import com.example.musify.mapper.PlaylistMapper;
@@ -13,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -30,8 +32,8 @@ public class PlaylistService implements IPlaylistService {
 
     @Override
     @Transactional
-    public PlaylistDTO savePlaylist(PlaylistDTO playlistDTO) {
-        Playlist playlist = playlistMapper.toPlaylistEntity(playlistDTO);
+    public PlaylistDTO savePlaylist(PlaylistCreateDTO playlistDTO) {
+        Playlist playlist = playlistMapper.toPlaylistFromCreateEntity(playlistDTO);
         return playlistMapper.toPlaylistDTO(playlistRepository.save(playlist));
     }
 
@@ -53,4 +55,12 @@ public class PlaylistService implements IPlaylistService {
 
         return playlistMapper.toPlaylistDTO(playlist);
     }
+
+    @Override
+    @Transactional
+    public String deletePlaylist(Integer id) {
+        playlistRepository.deleteById(id);
+        return "deleted";
+    }
+
 }

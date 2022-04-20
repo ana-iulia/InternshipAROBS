@@ -19,7 +19,6 @@ public class ArtistDTO {
     private String lastName;
     @NotBlank(message = "Stage name is mandatory")
     private String stageName;
-    @NotBlank(message = "Birthday name is mandatory")
     private LocalDate birthday;
     private String startActivePeriod;
     private String endActivePeriod;

@@ -7,7 +7,7 @@ import java.util.List;
 public interface ISongService {
     List<SongDTO> getAllSongs();
 
-    SongDTO saveSong(SongDTO songDTO);
+    SongDTO saveSong(SongDTO songDTO, String token) throws IllegalArgumentException;
 
     SongDTO updateSong(Integer id, SongDTO songDTO);
 }

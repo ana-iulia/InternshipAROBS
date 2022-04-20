@@ -7,10 +7,13 @@ import com.example.musify.mapper.AlbumMapper;
 import com.example.musify.mapper.ArtistMapper;
 import com.example.musify.model.Album;
 import com.example.musify.model.Artist;
+import com.example.musify.model.Role;
 import com.example.musify.repository.springdata.AlbumRepository;
 import com.example.musify.repository.springdata.ArtistRepository;
+import com.example.musify.security.JwtUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.webjars.NotFoundException;
 
 import javax.transaction.Transactional;
 import java.util.List;
@@ -24,6 +27,9 @@ public class AlbumService implements IAlbumService {
     @Autowired
     private AlbumMapper albumMapper;
 
+    @Autowired
+    private JwtUtils jwtUtils;
+
     @Override
     public List<AlbumDTO> getAllAlbums() {
         return albumRepository.findAll().stream().map(albumMapper::toAlbumDTO).collect(Collectors.toList());
@@ -31,9 +37,12 @@ public class AlbumService implements IAlbumService {
 
     @Override
     @Transactional
-    public AlbumDTO saveAlbum(AlbumDTO albumDTO) {
-        Album album = albumMapper.toAlbumEntity(albumDTO);
-        return albumMapper.toAlbumDTO(albumRepository.save(album));
+    public AlbumDTO saveAlbum(AlbumDTO albumDTO,String token) throws IllegalArgumentException{
+        if (jwtUtils.getRoleFromToken(token).equals(Role.ADMIN)) {
+            Album album = albumMapper.toAlbumEntity(albumDTO);
+            return albumMapper.toAlbumDTO(albumRepository.save(album));
+        }
+        throw new IllegalArgumentException("You do not have permission for this request.");
     }
 
     @Override

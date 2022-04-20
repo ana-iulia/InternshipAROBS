@@ -8,6 +8,7 @@ import com.example.musify.service.ArtistService;
 import com.example.musify.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -24,14 +25,15 @@ public class ArtistController {
     @Autowired
     private ArtistService artistService;
 
-    @RequestMapping(method = RequestMethod.GET)
+    @GetMapping
     public ResponseEntity<List<ArtistDTO>> getAll() {
         return new ResponseEntity<>(artistService.getAllArtists(), HttpStatus.OK);
     }
 
     @PostMapping("/create")
-    public ResponseEntity<ArtistDTO> createArtist(@RequestBody @Valid ArtistDTO artistDTO) {
-        return ResponseEntity.ok().body(artistService.saveArtist(artistDTO));
+    public ResponseEntity<ArtistDTO> createArtist(@RequestHeader("authorization") HttpHeaders headers, @RequestBody @Valid ArtistDTO artistDTO) {
+        String[] words = headers.getFirst("authorization").split(" ");
+        return ResponseEntity.ok().body(artistService.saveArtist(artistDTO, words[1]));
     }
 
     @PutMapping("/update/{id}")

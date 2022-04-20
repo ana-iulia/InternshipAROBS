@@ -1,6 +1,7 @@
 package com.example.musify.controller;
 
 import com.example.musify.dto.AlbumDTO;
+import com.example.musify.dto.PlaylistCreateDTO;
 import com.example.musify.dto.PlaylistDTO;
 import com.example.musify.model.Playlist;
 import com.example.musify.service.AlbumService;
@@ -21,18 +22,23 @@ public class PlaylistController {
     @Autowired
     private PlaylistService playlistService;
 
-    @RequestMapping(method = RequestMethod.GET)
+    @GetMapping
     public ResponseEntity<List<PlaylistDTO>> getAll() {
         return new ResponseEntity<>(playlistService.getAllPlaylists(), HttpStatus.OK);
     }
 
     @PostMapping("/create")
-    public ResponseEntity<PlaylistDTO> createPlaylist(@RequestBody @Valid PlaylistDTO playlistDTO) {
+    public ResponseEntity<PlaylistDTO> createPlaylist(@RequestBody @Valid PlaylistCreateDTO playlistDTO) {
         return ResponseEntity.ok().body(playlistService.savePlaylist(playlistDTO));
     }
 
     @PutMapping("/update/{id}")
     public ResponseEntity<PlaylistDTO> updatePlaylist(@PathVariable("id") Integer id, @RequestBody PlaylistDTO playlistDTO) {
         return ResponseEntity.ok().body(playlistService.updatePlaylist(id, playlistDTO));
+    }
+
+    @PutMapping("/delete/{id}")
+    public ResponseEntity<String> deletePlaylist(@PathVariable("id") Integer id) {
+        return ResponseEntity.ok().body(playlistService.deletePlaylist(id));
     }
 }

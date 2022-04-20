@@ -3,14 +3,16 @@ package com.example.musify.service;
 import com.example.musify.dto.LoginRequestDTO;
 import com.example.musify.dto.UserDTO;
 import com.example.musify.dto.UserRegisterDTO;
-import com.example.musify.model.Role;
+import org.webjars.NotFoundException;
 
 public interface IUserService {
-    String login(LoginRequestDTO loginRequest) throws Exception;
+    String login(LoginRequestDTO loginRequest) throws NotFoundException;
 
     String logout(String token);
 
     UserDTO updateUserToDeleted(Integer id);
 
-    UserDTO saveUser(UserRegisterDTO userDTO, Role role);
+    UserDTO saveRegularUser(UserRegisterDTO userDTO);
+
+    UserDTO saveAdminUser(UserRegisterDTO userDTO, String token) throws IllegalArgumentException;
 }

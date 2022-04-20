@@ -67,15 +67,29 @@ public class UserService implements IUserService {
 
     }
 
-
     @Override
     @Transactional
-    public UserDTO saveUser(UserRegisterDTO userDTO, Role role) {
+    public UserDTO saveRegularUser(UserRegisterDTO userDTO) {
         User user = userMapper.toUserEntity(userDTO);
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         user.setStatus(Status.ACTIVE);
-        user.setRole(role);
+        user.setRole(Role.REGULAR);
         return userMapper.toUserDTO(userRepository.save(user));
+
     }
 
+    @Override
+    @Transactional
+    public UserDTO saveAdminUser(UserRegisterDTO userDTO, String token) throws IllegalArgumentException {
+        if (jwtUtils.getRoleFromToken(token).equals(Role.ADMIN)) {
+            User user = userMapper.toUserEntity(userDTO);
+            user.setPassword(passwordEncoder.encode(user.getPassword()));
+            user.setStatus(Status.ACTIVE);
+            user.setRole(Role.ADMIN);
+            return userMapper.toUserDTO(userRepository.save(user));
+        }
+
+        throw new IllegalArgumentException("You do not have permission for this request.");
+
+    }
 }

@@ -19,6 +19,6 @@ public class PlaylistDTO {
     private String type;
     private LocalDate createdDate;
     private LocalDate lastUpdateDate;
-    private User user;
+    private Integer userId;
     private List<SongPlaylist> playlistSongs;
 }

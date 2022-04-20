@@ -24,14 +24,14 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @RequestMapping(method = RequestMethod.GET)
+    @GetMapping
     public ResponseEntity<List<UserDTO>> getAll() {
         return new ResponseEntity<>(userService.getAllUsers(), HttpStatus.OK);
     }
 
     @PostMapping("/register")
     public ResponseEntity<UserDTO> registerUser(@RequestBody @Valid UserRegisterDTO userDTO) {
-        return ResponseEntity.ok().body(userService.saveUser(userDTO,Role.REGULAR));
+        return ResponseEntity.ok().body(userService.saveRegularUser(userDTO));
     }
 
 
@@ -41,14 +41,14 @@ public class UserController {
     }
 
     @PostMapping("/register/admin")
-    public ResponseEntity<UserDTO> registerAdmin(@RequestBody @Valid UserRegisterDTO userDTO) {
-        return ResponseEntity.ok().body(userService.saveUser(userDTO, Role.ADMIN));
+    public ResponseEntity<UserDTO> registerAdmin(@RequestHeader("authorization") HttpHeaders headers, @RequestBody @Valid UserRegisterDTO userDTO) {
+        String[] words = headers.getFirst("authorization").split(" ");
+        return ResponseEntity.ok().body(userService.saveAdminUser(userDTO, words[1]));
     }
 
 
     @PutMapping("/delete/{id}")
     public ResponseEntity<UserDTO> deleteUser(@PathVariable("id") Integer id) {
-        System.out.println("ID: " + id);
         return ResponseEntity.ok().body(userService.updateUserToDeleted(id));
     }
 
