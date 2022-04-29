@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.sql.Time;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
@@ -14,6 +15,6 @@ import java.time.LocalTime;
 @AllArgsConstructor
 public class SongDTO {
     private String title;
-    private LocalTime duration;
+    private Time duration;
     private LocalDate creationDate;
 }

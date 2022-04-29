@@ -19,6 +19,7 @@ public class UserDTO {
     private String countryOfOrigin;
     private Role role;
     private Status status;
-    private List<Playlist> followedPlaylists;
+    //private List<Playlist> playlists;
+    //private List<Playlist> followedPlaylists;
 
 }

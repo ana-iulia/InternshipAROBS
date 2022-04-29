@@ -1,9 +1,11 @@
 package com.example.musify.service;
 
 import com.example.musify.dto.ArtistDTO;
+import com.example.musify.dto.SongDTO;
 import com.example.musify.mapper.ArtistMapper;
 import com.example.musify.model.Artist;
 import com.example.musify.model.Role;
+import com.example.musify.model.Song;
 import com.example.musify.repository.springdata.ArtistRepository;
 import com.example.musify.security.JwtUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -66,6 +68,7 @@ public class ArtistService implements IArtistService {
 
         return artistMapper.toArtistDTO(artist);
     }
+
 
 
 }

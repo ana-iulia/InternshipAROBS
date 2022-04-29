@@ -3,6 +3,7 @@ package com.example.musify.model;
 import lombok.*;
 
 import javax.persistence.*;
+import java.sql.Time;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
@@ -23,7 +24,7 @@ public class Song {
     private String title;
 
     @Column(name = "duration")
-    private LocalTime duration;
+    private Time duration;
 
     @Column(name = "creationDate")
     private LocalDate creationDate;

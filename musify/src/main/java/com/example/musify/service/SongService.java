@@ -5,8 +5,10 @@ import com.example.musify.dto.SongDTO;
 import com.example.musify.dto.UserDTO;
 import com.example.musify.mapper.SongMapper;
 import com.example.musify.model.Artist;
+import com.example.musify.model.Playlist;
 import com.example.musify.model.Role;
 import com.example.musify.model.Song;
+import com.example.musify.repository.springdata.PlaylistRepository;
 import com.example.musify.repository.springdata.SongRepository;
 import com.example.musify.security.JwtUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +25,9 @@ public class SongService implements ISongService {
     private SongRepository songRepository;
 
     @Autowired
+    private PlaylistRepository playlistRepository;
+
+    @Autowired
     private SongMapper songMapper;
 
     @Autowired
@@ -32,6 +37,11 @@ public class SongService implements ISongService {
     @Override
     public List<SongDTO> getAllSongs() {
         return songRepository.findAll().stream().map(songMapper::toSongDTO).collect(Collectors.toList());
+    }
+
+    @Override
+    public List<SongDTO> getAllSongsFromPlaylist(Integer idPlaylist) {
+        return playlistRepository.getById(idPlaylist).getSongs().stream().map(songMapper::toSongDTO).collect(Collectors.toList());
     }
 
     @Override
@@ -46,18 +56,32 @@ public class SongService implements ISongService {
 
     @Override
     @Transactional
-    public SongDTO updateSong(Integer id, SongDTO songDTO) {
-        Song song = songRepository.getById(id);
-        if (!songDTO.getTitle().equals("")) {
-            song.setTitle(songDTO.getTitle());
-        }
-        if (songDTO.getDuration() != null && !songDTO.getDuration().equals("")) {
-            song.setDuration(songDTO.getDuration());
-        }
-        if (songDTO.getCreationDate() != null && !songDTO.getCreationDate().equals("")) {
-            song.setCreationDate(songDTO.getCreationDate());
-        }
+    public SongDTO updateSong(Integer id, SongDTO songDTO, String token) throws IllegalArgumentException {
+        if (jwtUtils.getRoleFromToken(token).equals(Role.ADMIN)) {
+            Song song = songRepository.getById(id);
+            if (!songDTO.getTitle().equals("")) {
+                song.setTitle(songDTO.getTitle());
+            }
+            if (songDTO.getDuration() != null && !songDTO.getDuration().equals("")) {
+                song.setDuration(songDTO.getDuration());
+            }
+            if (songDTO.getCreationDate() != null && !songDTO.getCreationDate().equals("")) {
+                song.setCreationDate(songDTO.getCreationDate());
+            }
 
-        return songMapper.toSongDTO(song);
+            return songMapper.toSongDTO(song);
+        }
+        throw new IllegalArgumentException("You do not have permission for this request.");
     }
+
+    @Override
+    public List<SongDTO> filterSortSongs(String title) {
+        List<Song> filteredSortedSongs = songRepository.filterSortSongs(title);
+
+        return filteredSortedSongs
+                .stream()
+                .map(songMapper::toSongDTO)
+                .collect(Collectors.toList());
+    }
+
 }

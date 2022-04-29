@@ -95,6 +95,16 @@ public class JwtUtils {
         return Role.REGULAR;
     }
 
+    public Integer getIdFromToken(String jwtToken) {
+        Algorithm algorithm = Algorithm.HMAC256(signatureSecret);
+        JWTVerifier verifier = JWT.require(algorithm)
+                .withIssuer(issuer)
+                .withSubject(issuer)
+                .build();
+        DecodedJWT decodedJWT = verifier.verify(jwtToken);
+        return decodedJWT.getClaim("userId").asInt();
+    }
+
     public List<String> getBlacklist() {
         return blacklist;
     }

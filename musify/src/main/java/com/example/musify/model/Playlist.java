@@ -4,6 +4,8 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.Date;
+import java.util.LinkedList;
 import java.util.List;
 
 @Entity
@@ -22,20 +24,23 @@ public class Playlist {
     private String name;
 
     @Column(name = "type")
-    private String type;
+    @Enumerated(EnumType.STRING)
+    private Type type;
 
     @Column(name = "createdDate")
-    private LocalDate createdDate;
+    private Date createdDate;
 
 
     @Column(name = "lastUpdateDate")
-    private LocalDate lastUpdateDate;
+    private Date lastUpdateDate;
 
     @ManyToOne
     private User user;
 
-    @OneToMany
+    @ManyToMany
     @JoinColumn(name = "playlist_id")
-    private List<SongPlaylist> playlistSongs;
+    private List<Song> songs= new LinkedList<>();
+    //private LinkedList<SongPlaylist> playlistSongs;
+    //LinkedList<SongPlaylist> playlistSongs = new LinkedList<>();
 
 }

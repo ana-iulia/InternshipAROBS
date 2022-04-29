@@ -60,11 +60,35 @@ public class UserService implements IUserService {
 
     @Override
     @Transactional
-    public UserDTO updateUserToDeleted(Integer id) {
-        User user = userRepository.getById(id);
-        user.setStatus(Status.DELETED);
-        return userMapper.toUserDTO(user);
+    public UserDTO updateUserToDeleted(Integer id, String token) throws IllegalArgumentException {
+        if (jwtUtils.getIdFromToken(token).equals(id) || jwtUtils.getRoleFromToken(token).equals(Role.ADMIN)) {
+            User user = userRepository.getById(id);
+            user.setStatus(Status.DELETED);
+            return userMapper.toUserDTO(user);
+        }
+        throw new IllegalArgumentException("You do not have permission for this request.");
+    }
 
+    @Override
+    @Transactional
+    public UserDTO updateUser(Integer id, UserDTO userDTO, String token) throws IllegalArgumentException {
+        if (jwtUtils.getIdFromToken(token).equals(id) || jwtUtils.getRoleFromToken(token).equals(Role.ADMIN)) {
+            User user = userRepository.getById(id);
+            if (!userDTO.getFirstName().equals("")) {
+                user.setFirstName(userDTO.getFirstName());
+            }
+            if (!userDTO.getLastName().equals("")) {
+                user.setLastName(userDTO.getLastName());
+            }
+            if (!userDTO.getEmail().equals("")) {
+                user.setEmail(userDTO.getEmail());
+            }
+            if (!userDTO.getCountryOfOrigin().equals("")) {
+                user.setCountryOfOrigin(userDTO.getCountryOfOrigin());
+            }
+            return userMapper.toUserDTO(user);
+        }
+        throw new IllegalArgumentException("You do not have permission for this request.");
     }
 
     @Override
@@ -89,6 +113,21 @@ public class UserService implements IUserService {
             return userMapper.toUserDTO(userRepository.save(user));
         }
 
+        throw new IllegalArgumentException("You do not have permission for this request.");
+
+    }
+
+    @Override
+    @Transactional
+    public UserDTO saveMainAdminUser(UserRegisterDTO userDTO) throws IllegalArgumentException{
+
+        if(userRepository.findAll().isEmpty()) {
+            User user = userMapper.toUserEntity(userDTO);
+            user.setPassword(passwordEncoder.encode(user.getPassword()));
+            user.setStatus(Status.ACTIVE);
+            user.setRole(Role.ADMIN);
+            return userMapper.toUserDTO(userRepository.save(user));
+        }
         throw new IllegalArgumentException("You do not have permission for this request.");
 
     }

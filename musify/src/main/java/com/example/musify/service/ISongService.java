@@ -9,5 +9,9 @@ public interface ISongService {
 
     SongDTO saveSong(SongDTO songDTO, String token) throws IllegalArgumentException;
 
-    SongDTO updateSong(Integer id, SongDTO songDTO);
+    SongDTO updateSong(Integer id, SongDTO songDTO, String token) throws IllegalArgumentException;
+
+    List<SongDTO> getAllSongsFromPlaylist(Integer idPlaylist);
+
+    List<SongDTO> filterSortSongs(String title);
 }

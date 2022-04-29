@@ -1,6 +1,7 @@
 package com.example.musify.controller;
 
 import com.example.musify.dto.LoginRequestDTO;
+import com.example.musify.dto.SongDTO;
 import com.example.musify.dto.UserDTO;
 import com.example.musify.dto.UserRegisterDTO;
 import com.example.musify.model.Role;
@@ -46,10 +47,21 @@ public class UserController {
         return ResponseEntity.ok().body(userService.saveAdminUser(userDTO, words[1]));
     }
 
+    @PostMapping("/register/mainAdmin")
+    public ResponseEntity<UserDTO> registerMainAdmin(@RequestBody @Valid UserRegisterDTO userDTO) {
+        return ResponseEntity.ok().body(userService.saveMainAdminUser(userDTO));
+    }
 
     @PutMapping("/delete/{id}")
-    public ResponseEntity<UserDTO> deleteUser(@PathVariable("id") Integer id) {
-        return ResponseEntity.ok().body(userService.updateUserToDeleted(id));
+    public ResponseEntity<UserDTO> deleteUser(@RequestHeader("authorization") HttpHeaders headers, @PathVariable("id") Integer id) {
+        String[] words = headers.getFirst("authorization").split(" ");
+        return ResponseEntity.ok().body(userService.updateUserToDeleted(id, words[1]));
+    }
+
+    @PutMapping("/update/{id}")
+    public ResponseEntity<UserDTO> updateUser(@RequestHeader("authorization") HttpHeaders headers, @PathVariable("id") Integer id, @RequestBody UserDTO userDTO) {
+        String[] words = headers.getFirst("authorization").split(" ");
+        return ResponseEntity.ok().body(userService.updateUser(id, userDTO, words[1]));
     }
 
     @PostMapping("/logout")
