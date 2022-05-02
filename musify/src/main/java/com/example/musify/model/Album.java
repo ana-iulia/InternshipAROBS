@@ -4,6 +4,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.LinkedList;
 import java.util.List;
 
 @Entity
@@ -35,6 +36,7 @@ public class Album {
     private String label;
 
     @ManyToMany
-    private List<Song> songs;
-
+    @OrderColumn
+    @JoinColumn(name = "album_id")
+    private List<Song> songs= new LinkedList<>();
 }

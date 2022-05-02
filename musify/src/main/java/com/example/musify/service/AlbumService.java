@@ -3,19 +3,21 @@ package com.example.musify.service;
 
 import com.example.musify.dto.AlbumDTO;
 import com.example.musify.dto.ArtistDTO;
+import com.example.musify.dto.PlaylistDTO;
 import com.example.musify.mapper.AlbumMapper;
 import com.example.musify.mapper.ArtistMapper;
-import com.example.musify.model.Album;
-import com.example.musify.model.Artist;
-import com.example.musify.model.Role;
+import com.example.musify.model.*;
 import com.example.musify.repository.springdata.AlbumRepository;
 import com.example.musify.repository.springdata.ArtistRepository;
+import com.example.musify.repository.springdata.SongRepository;
 import com.example.musify.security.JwtUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.webjars.NotFoundException;
 
 import javax.transaction.Transactional;
+import java.sql.Date;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -23,6 +25,9 @@ import java.util.stream.Collectors;
 public class AlbumService implements IAlbumService {
     @Autowired
     private AlbumRepository albumRepository;
+
+    @Autowired
+    private SongRepository songRepository;
 
     @Autowired
     private AlbumMapper albumMapper;
@@ -37,7 +42,7 @@ public class AlbumService implements IAlbumService {
 
     @Override
     @Transactional
-    public AlbumDTO saveAlbum(AlbumDTO albumDTO,String token) throws IllegalArgumentException{
+    public AlbumDTO saveAlbum(AlbumDTO albumDTO, String token) throws IllegalArgumentException {
         if (jwtUtils.getRoleFromToken(token).equals(Role.ADMIN)) {
             Album album = albumMapper.toAlbumEntity(albumDTO);
             return albumMapper.toAlbumDTO(albumRepository.save(album));
@@ -67,6 +72,19 @@ public class AlbumService implements IAlbumService {
         }
 
         return albumMapper.toAlbumDTO(album);
+    }
+
+
+    @Override
+    @Transactional
+    public AlbumDTO addSongToAlbum(Integer idAlbum, Integer idSong, String token) throws IllegalArgumentException {
+        Album album = albumRepository.getById(idAlbum);
+        if (jwtUtils.getRoleFromToken(token).equals(Role.ADMIN)) {
+            Song song = songRepository.getById(idSong);
+            album.getSongs().add(song);
+            return albumMapper.toAlbumDTO(album);
+        }
+        throw new IllegalArgumentException("You do not have permission for this request.");
     }
 
 }

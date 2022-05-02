@@ -37,6 +37,9 @@ public class PlaylistService implements IPlaylistService {
     private SongRepository songRepository;
 
     @Autowired
+    private AlbumRepository albumRepository;
+
+    @Autowired
     private PlaylistMapper playlistMapper;
 
     @Autowired
@@ -86,7 +89,7 @@ public class PlaylistService implements IPlaylistService {
     @Transactional
     public PlaylistDTO updatePlaylist(Integer id, PlaylistDTO playlistDTO, String token) throws IllegalArgumentException {
         Playlist playlist = playlistRepository.getById(id);
-        if (jwtUtils.getIdFromToken(token).equals(playlist.getUser().getId())) {
+        if (jwtUtils.getIdFromToken(token).equals(playlist.getUser().getId())|| jwtUtils.getRoleFromToken(token).equals(Role.ADMIN)) {
             if (!playlistDTO.getName().equals("")) {
                 playlist.setName(playlistDTO.getName());
             }
@@ -103,7 +106,7 @@ public class PlaylistService implements IPlaylistService {
     @Transactional
     public PlaylistDTO addSongToPlaylist(Integer idPlaylist, Integer idSong, String token) throws IllegalArgumentException {
         Playlist playlist = playlistRepository.getById(idPlaylist);
-        if (jwtUtils.getIdFromToken(token).equals(playlist.getUser().getId())) {
+        if (jwtUtils.getIdFromToken(token).equals(playlist.getUser().getId())|| jwtUtils.getRoleFromToken(token).equals(Role.ADMIN)) {
             Song song = songRepository.getById(idSong);
             playlist.getSongs().add(song);
             playlist.setLastUpdateDate(Date.valueOf(LocalDate.now()));
@@ -114,9 +117,22 @@ public class PlaylistService implements IPlaylistService {
 
     @Override
     @Transactional
+    public PlaylistDTO addAlbumToPlaylist(Integer idPlaylist, Integer idAlbum, String token) throws IllegalArgumentException {
+        Playlist playlist = playlistRepository.getById(idPlaylist);
+        if (jwtUtils.getIdFromToken(token).equals(playlist.getUser().getId()) ||jwtUtils.getRoleFromToken(token).equals(Role.ADMIN)) {
+            Album album = albumRepository.getById(idAlbum);
+            album.getSongs().forEach(song -> playlist.getSongs().add(song));
+            playlist.setLastUpdateDate(Date.valueOf(LocalDate.now()));
+            return playlistMapper.toPlaylistDTO(playlist);
+        }
+        throw new IllegalArgumentException("You do not have permission for this request.");
+    }
+
+    @Override
+    @Transactional
     public PlaylistDTO removeSongFromPlaylist(Integer idPlaylist, Integer idSong, String token) throws IllegalArgumentException {
         Playlist playlist = playlistRepository.getById(idPlaylist);
-        if (jwtUtils.getIdFromToken(token).equals(playlist.getUser().getId())) {
+        if (jwtUtils.getIdFromToken(token).equals(playlist.getUser().getId())|| jwtUtils.getRoleFromToken(token).equals(Role.ADMIN)) {
             Song song = songRepository.getById(idSong);
             if (playlist.getSongs().contains(song)) {
                 playlist.getSongs().remove(song);
@@ -132,7 +148,7 @@ public class PlaylistService implements IPlaylistService {
     @Transactional
     public List<SongDTO> changeSongOrderInPlaylist(Integer idPlaylist, Integer idSong, Integer newPosition, String token) throws IllegalArgumentException {
         Playlist playlist = playlistRepository.getById(idPlaylist);
-        if (jwtUtils.getIdFromToken(token).equals(playlist.getUser().getId())) {
+        if (jwtUtils.getIdFromToken(token).equals(playlist.getUser().getId())|| jwtUtils.getRoleFromToken(token).equals(Role.ADMIN)) {
             Song song = songRepository.getById(idSong);
             if (playlist.getSongs().contains(song)) {
                 playlist.getSongs().remove(song);

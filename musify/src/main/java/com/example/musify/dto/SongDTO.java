@@ -14,6 +14,7 @@ import java.time.LocalTime;
 @NoArgsConstructor
 @AllArgsConstructor
 public class SongDTO {
+    private Integer id;
     private String title;
     private Time duration;
     private LocalDate creationDate;

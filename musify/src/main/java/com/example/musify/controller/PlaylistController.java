@@ -80,4 +80,11 @@ public class PlaylistController {
     public ResponseEntity<String> deletePlaylist(@PathVariable("id") Integer id) {
         return ResponseEntity.ok().body(playlistService.deletePlaylist(id));
     }
+
+
+    @PutMapping(params = {"idPlaylist", "idAlbum"}, value = "/addAlbum")
+    public ResponseEntity<PlaylistDTO> addAlbumToPlaylist(@RequestHeader("authorization") HttpHeaders headers, @RequestParam("idPlaylist") Integer idPlaylist, @RequestParam("idAlbum") Integer idAlbum) {
+        String[] words = headers.getFirst("authorization").split(" ");
+        return ResponseEntity.ok().body(playlistService.addAlbumToPlaylist(idPlaylist, idAlbum, words[1]));
+    }
 }

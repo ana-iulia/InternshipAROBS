@@ -26,4 +26,6 @@ public interface IPlaylistService {
     PlaylistDTO removeSongFromPlaylist(Integer idPlaylist, Integer idSong, String token) throws IllegalArgumentException;
 
     List<SongDTO> changeSongOrderInPlaylist(Integer idPlaylist, Integer idSong, Integer newPosition, String token) throws IllegalArgumentException;
+
+    PlaylistDTO addAlbumToPlaylist(Integer idPlaylist, Integer idAlbum, String token) throws IllegalArgumentException;
 }

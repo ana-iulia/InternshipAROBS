@@ -10,4 +10,6 @@ public interface IAlbumService {
     AlbumDTO saveAlbum(AlbumDTO albumDTO, String token) throws IllegalArgumentException;
 
     AlbumDTO updateAlbum(Integer id, AlbumDTO albumDTO);
+
+    AlbumDTO addSongToAlbum(Integer idAlbum, Integer idSong, String token) throws IllegalArgumentException;
 }

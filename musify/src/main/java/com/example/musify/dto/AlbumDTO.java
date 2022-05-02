@@ -13,10 +13,10 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class AlbumDTO {
+    private Integer id;
     private String title;
     private String description;
     private String genre;
     private LocalDate releaseDate;
     private String label;
-    private List<Song> songs;
 }

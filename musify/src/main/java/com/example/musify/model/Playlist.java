@@ -38,6 +38,7 @@ public class Playlist {
     private User user;
 
     @ManyToMany
+    @OrderColumn
     @JoinColumn(name = "playlist_id")
     private List<Song> songs= new LinkedList<>();
     //private LinkedList<SongPlaylist> playlistSongs;

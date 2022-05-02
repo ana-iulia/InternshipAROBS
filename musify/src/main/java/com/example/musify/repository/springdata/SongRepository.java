@@ -11,11 +11,10 @@ import java.util.List;
 @Repository
 public interface SongRepository extends JpaRepository<Song, Integer> {
 
-    @Query(value = "SELECT s FROM Song s WHERE (:title = s.title ) ")
+
+    @Query(value = "SELECT s FROM Song s LEFT JOIN SongAlternativeTitle sa ON sa.song.id=s.id WHERE (:title = s.title OR :title=sa.title)")
     List<Song> filterSortSongs(
             @Param("title") String title
     );
 
-    //JOIN SongAlternativeTitle sa
-    //OR :title=sa.title
 }
