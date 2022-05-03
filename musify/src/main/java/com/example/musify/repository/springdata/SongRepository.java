@@ -12,7 +12,7 @@ import java.util.List;
 public interface SongRepository extends JpaRepository<Song, Integer> {
 
 
-    @Query(value = "SELECT s FROM Song s LEFT JOIN SongAlternativeTitle sa ON sa.song.id=s.id WHERE (:title = s.title OR :title=sa.title)")
+    @Query(value = "SELECT s FROM Song s LEFT JOIN SongAlternativeTitle sa ON sa.song.id=s.id WHERE (s.title LIKE CONCAT('%', :title, '%') OR sa.title LIKE CONCAT('%', :title, '%'))")
     List<Song> filterSortSongs(
             @Param("title") String title
     );
