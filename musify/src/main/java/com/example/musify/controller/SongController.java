@@ -20,35 +20,35 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/musify/song")
+@RequestMapping("/musify")
 public class SongController {
     @Autowired
     private SongService songService;
 
-    @GetMapping
+    @GetMapping("/songs")
     public ResponseEntity<List<SongDTO>> getAll() {
         return new ResponseEntity<>(songService.getAllSongs(), HttpStatus.OK);
     }
 
-    @PostMapping("/create")
+    @PostMapping("/song")
     public ResponseEntity<SongDTO> createSong(@RequestHeader("authorization") HttpHeaders headers, @RequestBody @Valid SongDTO songDTO) {
         String[] words = headers.getFirst("authorization").split(" ");
         return ResponseEntity.ok().body(songService.saveSong(songDTO, words[1]));
     }
 
 
-    @PutMapping("/update/{id}")
-    public ResponseEntity<SongDTO> updateSong(@RequestHeader("authorization") HttpHeaders headers,@PathVariable("id") Integer id, @RequestBody SongDTO songDTO) {
+    @PutMapping("/song/{id}")
+    public ResponseEntity<SongDTO> updateSong(@RequestHeader("authorization") HttpHeaders headers, @PathVariable("id") Integer id, @RequestBody SongDTO songDTO) {
         String[] words = headers.getFirst("authorization").split(" ");
-        return ResponseEntity.ok().body(songService.updateSong(id, songDTO,words[1]));
+        return ResponseEntity.ok().body(songService.updateSong(id, songDTO, words[1]));
     }
 
-    @GetMapping("/playlist/{id}")
+    @GetMapping("/song/playlist/{id}")
     public ResponseEntity<List<SongDTO>> getAllSongsFromPlaylist(@PathVariable("id") Integer idPlaylist) {
         return new ResponseEntity<>(songService.getAllSongsFromPlaylist(idPlaylist), HttpStatus.OK);
     }
 
-    @GetMapping("/filtered")
+    @GetMapping("/song-filtered")
     public ResponseEntity<List<SongDTO>> filterSortSongs(
             @RequestParam(required = false, defaultValue = "") String title
     ) {

@@ -17,8 +17,7 @@ import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
-import static org.springframework.http.HttpStatus.BAD_REQUEST;
-import static org.springframework.http.HttpStatus.NOT_FOUND;
+import static org.springframework.http.HttpStatus.*;
 
 @ControllerAdvice
 public class RestExceptionHandler extends ResponseEntityExceptionHandler {
@@ -42,9 +41,19 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
         List<String> errors = new ArrayList<>();
         errors.add(ex.getMessage());
         ApiError apiError = new ApiError(NOT_FOUND, errors);
-        logger.error("Entity not found: ", errorId, ex);
+        logger.error("Entity not found: {}", errorId, ex);
         return new ResponseEntity<>(apiError, NOT_FOUND);
 
+    }
+
+    @ExceptionHandler(UnauthorizedException.class)
+    protected ResponseEntity<Object> handleUnauthorizedException(UnauthorizedException ex) {
+        UUID errorId = UUID.randomUUID();
+        List<String> errors = new ArrayList<>();
+        errors.add(ex.getMessage());
+        ApiError apiError = new ApiError(UNAUTHORIZED, errors);
+        logger.error("UNAUTHORIZED: {}", errorId, ex);
+        return new ResponseEntity<>(apiError, UNAUTHORIZED);
     }
 
 

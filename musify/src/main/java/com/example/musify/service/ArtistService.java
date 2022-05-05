@@ -35,7 +35,7 @@ public class ArtistService implements IArtistService {
 
     @Override
     @Transactional
-    public ArtistDTO saveArtist(ArtistDTO artistDTO,String token) throws IllegalArgumentException{
+    public ArtistDTO saveArtist(ArtistDTO artistDTO, String token) throws IllegalArgumentException {
         if (jwtUtils.getRoleFromToken(token).equals(Role.ADMIN)) {
             Artist artist = artistMapper.toArtistEntity(artistDTO);
             return artistMapper.toArtistDTO(artistRepository.save(artist));
@@ -56,7 +56,7 @@ public class ArtistService implements IArtistService {
         if (!artistDTO.getStageName().equals("")) {
             artist.setStageName(artistDTO.getStageName());
         }
-        if (artistDTO.getBirthday() != null && !artistDTO.getBirthday().equals("")) {
+        if (artistDTO.getBirthday() != null) {
             artist.setBirthday(artistDTO.getBirthday());
         }
         if (!artistDTO.getStartActivePeriod().equals("")) {
@@ -68,7 +68,6 @@ public class ArtistService implements IArtistService {
 
         return artistMapper.toArtistDTO(artist);
     }
-
 
 
 }

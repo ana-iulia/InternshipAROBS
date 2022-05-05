@@ -19,24 +19,24 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/musify/artist")
+@RequestMapping("/musify")
 public class ArtistController {
 
     @Autowired
     private ArtistService artistService;
 
-    @GetMapping
+    @GetMapping("/artists")
     public ResponseEntity<List<ArtistDTO>> getAll() {
         return new ResponseEntity<>(artistService.getAllArtists(), HttpStatus.OK);
     }
 
-    @PostMapping("/create")
+    @PostMapping("/artist")
     public ResponseEntity<ArtistDTO> createArtist(@RequestHeader("authorization") HttpHeaders headers, @RequestBody @Valid ArtistDTO artistDTO) {
         String[] words = headers.getFirst("authorization").split(" ");
         return ResponseEntity.ok().body(artistService.saveArtist(artistDTO, words[1]));
     }
 
-    @PutMapping("/update/{id}")
+    @PutMapping("/artist/{id}")
     public ResponseEntity<ArtistDTO> updateArtist(@PathVariable("id") Integer id, @RequestBody ArtistDTO artistDTO) {
         return ResponseEntity.ok().body(artistService.updateArtist(id, artistDTO));
     }

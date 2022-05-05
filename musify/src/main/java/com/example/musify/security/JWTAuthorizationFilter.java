@@ -1,5 +1,6 @@
 package com.example.musify.security;
 
+import com.example.musify.model.Role;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.util.Pair;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -47,9 +48,9 @@ public class JWTAuthorizationFilter extends BasicAuthenticationFilter {
         if (token != null) {
             token = token.replaceAll(TOKEN_PREFIX, "").trim();
 
-            Pair<Integer, String> userIdAndRole = jwtUtils.validateToken(token);
+            Pair<Integer, Role> userIdAndRole = jwtUtils.validateToken(token);
             String userId = String.valueOf(userIdAndRole.getFirst());
-            String role = userIdAndRole.getSecond();
+            Role role = userIdAndRole.getSecond();
             //String version = userIdAndVersion.getSecond();
 
 

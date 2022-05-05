@@ -7,11 +7,13 @@ import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.interfaces.DecodedJWT;
 import com.example.musify.exception.RestExceptionHandler;
 import com.example.musify.model.Role;
+import org.apache.commons.lang3.tuple.Triple;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.FactoryBean;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.util.Pair;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
@@ -57,7 +59,7 @@ public class JwtUtils {
                 .sign(algorithm);
     }
 
-    public Pair<Integer, String> validateToken(String jwtToken) {
+    public Pair<Integer, Role> validateToken(String jwtToken) {
         Algorithm algorithm = Algorithm.HMAC256(signatureSecret);
 
         JWTVerifier verifier = JWT.require(algorithm)
@@ -67,13 +69,17 @@ public class JwtUtils {
 
         DecodedJWT decodedJWT = verifier.verify(jwtToken);
         Integer userId = decodedJWT.getClaim("userId").asInt();
-        //String role = decodedJWT.getClaim("role").asString();
+        String roleString = decodedJWT.getClaim("role").asString();
+        Role role = Role.ADMIN;
+        if (roleString.equals("REGULAR")) {
+            role = Role.REGULAR;
+        }
         String version = decodedJWT.getClaim("version").asString();
         if (blacklist.contains(jwtToken)) {
-            return Pair.of(userId, null);
+            return Pair.of(userId, role);
         }
 
-        return Pair.of(userId, version);
+        return Pair.of(userId, role);
     }
 
     public void invalidateToken(String jwtToken) {
@@ -107,6 +113,11 @@ public class JwtUtils {
 
     public List<String> getBlacklist() {
         return blacklist;
+    }
+
+    public static Role getUserRoleFromSession() {
+        return Role.valueOf(String.valueOf(((Pair<?, ?>) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getSecond()));
+
     }
 
 }
