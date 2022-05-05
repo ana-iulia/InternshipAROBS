@@ -74,9 +74,8 @@ public class JwtUtils {
         if (roleString.equals("REGULAR")) {
             role = Role.REGULAR;
         }
-        String version = decodedJWT.getClaim("version").asString();
         if (blacklist.contains(jwtToken)) {
-            return Pair.of(userId, role);
+            return Pair.of(userId, null);
         }
 
         return Pair.of(userId, role);
@@ -115,9 +114,12 @@ public class JwtUtils {
         return blacklist;
     }
 
+    public static Integer getUserIdFromSession() {
+        return Integer.valueOf(String.valueOf(((Pair<?, ?>) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getFirst()));
+    }
     public static Role getUserRoleFromSession() {
         return Role.valueOf(String.valueOf(((Pair<?, ?>) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getSecond()));
-
     }
+
 
 }

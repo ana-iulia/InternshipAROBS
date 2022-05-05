@@ -18,6 +18,7 @@ import java.util.stream.Collectors;
 
 @Service
 public class AlbumService implements IAlbumService {
+    private static final String ERROR_MESSAGE = "You do not have permission for this request.";
     @Autowired
     private AlbumRepository albumRepository;
 
@@ -43,7 +44,7 @@ public class AlbumService implements IAlbumService {
             Album album = albumMapper.toAlbumEntity(albumDTO);
             return albumMapper.toAlbumDTO(albumRepository.save(album));
         }
-        throw new UnauthorizedException("You do not have permission for this request.");
+        throw new UnauthorizedException(ERROR_MESSAGE);
     }
 
     @Override
@@ -80,7 +81,7 @@ public class AlbumService implements IAlbumService {
             album.getSongs().add(song);
             return albumMapper.toAlbumDTO(album);
         }
-        throw new UnauthorizedException("You do not have permission for this request.");
+        throw new UnauthorizedException(ERROR_MESSAGE);
     }
 
 }

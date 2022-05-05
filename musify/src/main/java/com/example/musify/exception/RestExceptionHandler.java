@@ -15,7 +15,6 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
-import java.util.stream.Collectors;
 
 import static org.springframework.http.HttpStatus.*;
 
@@ -61,15 +60,10 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
     protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex, HttpHeaders headers, HttpStatus status, WebRequest request) {
         List<String> errorMessages = ex.getAllErrors().stream()
                 .map(DefaultMessageSourceResolvable::getDefaultMessage)
-                .collect(Collectors.toList());
+                .toList();
         ApiError apiError = new ApiError(BAD_REQUEST, errorMessages);
         logger.error("Illegal argument: ", ex);
         return new ResponseEntity<>(apiError, BAD_REQUEST);
     }
 
-
-//    @Override
-//    protected ResponseEntity<Object> handleExceptionInternal(Exception ex, Object body, HttpHeaders headers, HttpStatus status, WebRequest request){
-//        ApiError apiError=new ApiError(INTERNAL_SERVER_ERROR,)
-//    }
 }

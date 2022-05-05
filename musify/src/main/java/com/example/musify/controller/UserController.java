@@ -1,10 +1,8 @@
 package com.example.musify.controller;
 
 import com.example.musify.dto.LoginRequestDTO;
-import com.example.musify.dto.SongDTO;
 import com.example.musify.dto.UserDTO;
 import com.example.musify.dto.UserRegisterDTO;
-import com.example.musify.model.Role;
 import com.example.musify.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,9 +11,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.webjars.NotFoundException;
-
 import javax.validation.Valid;
 import java.util.List;
+import java.util.Objects;
 
 
 @RestController
@@ -42,9 +40,8 @@ public class UserController {
     }
 
     @PostMapping("/user/registration-admin")
-    public ResponseEntity<UserDTO> registerAdmin(@RequestHeader("authorization") HttpHeaders headers, @RequestBody @Valid UserRegisterDTO userDTO) {
-        String[] words = headers.getFirst("authorization").split(" ");
-        return ResponseEntity.ok().body(userService.saveAdminUser(userDTO, words[1]));
+    public ResponseEntity<UserDTO> registerAdmin(@RequestBody @Valid UserRegisterDTO userDTO) {
+        return ResponseEntity.ok().body(userService.saveAdminUser(userDTO));
     }
 
     @PostMapping("/user/registration-main-admin")
@@ -53,20 +50,18 @@ public class UserController {
     }
 
     @DeleteMapping("/user/{id}")
-    public ResponseEntity<UserDTO> deleteUser(@RequestHeader("authorization") HttpHeaders headers, @PathVariable("id") Integer id) {
-        String[] words = headers.getFirst("authorization").split(" ");
-        return ResponseEntity.ok().body(userService.updateUserToDeleted(id, words[1]));
+    public ResponseEntity<UserDTO> deleteUser(@PathVariable("id") Integer id) {
+        return ResponseEntity.ok().body(userService.updateUserToDeleted(id));
     }
 
     @PutMapping("/user/{id}")
-    public ResponseEntity<UserDTO> updateUser(@RequestHeader("authorization") HttpHeaders headers, @PathVariable("id") Integer id, @RequestBody UserDTO userDTO) {
-        String[] words = headers.getFirst("authorization").split(" ");
-        return ResponseEntity.ok().body(userService.updateUser(id, userDTO, words[1]));
+    public ResponseEntity<UserDTO> updateUser(@PathVariable("id") Integer id, @RequestBody UserDTO userDTO) {
+        return ResponseEntity.ok().body(userService.updateUser(id, userDTO));
     }
 
     @PostMapping("/user/logout")
     public ResponseEntity<String> logout(@RequestHeader("authorization") HttpHeaders headers) {
-        String[] words = headers.getFirst("authorization").split(" ");
+        String[] words = Objects.requireNonNull(headers.getFirst("authorization")).split(" ");
         return ResponseEntity.ok().body(userService.logout(words[1]));
 
     }

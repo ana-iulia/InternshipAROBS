@@ -10,13 +10,13 @@ public interface IUserService {
 
     String logout(String token);
 
-    UserDTO updateUserToDeleted(Integer id, String token) throws IllegalArgumentException;
+    UserDTO updateUserToDeleted(Integer id) throws IllegalArgumentException;
 
-    UserDTO updateUser(Integer id, UserDTO userDTO, String token) throws IllegalArgumentException;
+    UserDTO updateUser(Integer id, UserDTO userDTO) throws IllegalArgumentException;
 
     UserDTO saveRegularUser(UserRegisterDTO userDTO);
 
-    UserDTO saveAdminUser(UserRegisterDTO userDTO, String token) throws IllegalArgumentException;
+    UserDTO saveAdminUser(UserRegisterDTO userDTO) throws IllegalArgumentException;
 
     UserDTO saveMainAdminUser(UserRegisterDTO userDTO) throws IllegalArgumentException;
 }

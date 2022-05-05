@@ -16,22 +16,12 @@ public class ApiError {
 
     public ApiError() {
     }
-//    public ApiError(HttpStatus errorCode, String errorMessage) {
-//        this.timeStamp = LocalDateTime.now();
-//        this.errorCode = errorCode;
-//        if (errorMessage == null) {
-//            this.errorMessages = new ArrayList<>();
-//        }
-//        errorMessages.forEach(error -> this.errorMessages.add(error));
-//
-//
-//    }
 
 
     public ApiError(HttpStatus errorCode, List<String> errorMessages) {
         this.timeStamp = LocalDateTime.now();
         this.errorCode = errorCode;
-        if (this.errorMessages==null) {
+        if (this.errorMessages == null) {
             this.errorMessages = new ArrayList<>();
         }
         errorMessages.forEach(error -> this.errorMessages.add(error));
